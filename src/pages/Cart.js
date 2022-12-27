@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 import { addToCart, deleteFromCart } from "../actions/cartActions";
 import { useNavigate } from "react-router-dom";
+import Checkout from "../components/Checkout";
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -92,7 +93,7 @@ const Cart = () => {
                         <div class="d-flex flex-row ">
                     
                           <span class="d-block ml-5 font-weight-bold">
-                            {item.price}*{item.quantity}={item.total}
+                            {item.price}*{item.quantity}=₹{item.total}
                           </span>
                           <i class="fa fa-trash-o ml-3 text-black-50"></i>
 
@@ -105,9 +106,9 @@ const Cart = () => {
                 })}
               </div>
               <div class="col-md-4">
-                <h2 style={{ fontSize: "20px" }}>SubTotal</h2>
-                <h6> {subTotal}</h6>
-                <button className="btn btn-danger">CHECK OUT</button>
+                <h2 style={{ fontSize: "45px" }}>SubTotal: ₹{subTotal}</h2>
+              
+                <Checkout subTotal={subTotal} />
               </div>
             </div>
           </div>
